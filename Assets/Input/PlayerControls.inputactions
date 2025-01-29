@@ -1,0 +1,64 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "9eb421c3-c300-4d5f-9e7c-3d9c9592d1c3",
+            "actions": [
+                {
+                    "name": "Navigate",
+                    "type": "PassThrough",
+                    "id": "7b1458c5-9e15-4f28-9f4e-a4b3a8c7e5d1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Submit",
+                    "type": "Button",
+                    "id": "2e8f3d1c-6b4a-4f1b-9f7e-3d9c9592d1c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "4f1b9f7e-3d9c-9592-d1c3-9eb421c3c300",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Click",
+                    "type": "PassThrough",
+                    "id": "3d9c9592-d1c3-9eb4-21c3-c3004d5f9e7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PetInteraction",
+                    "type": "Value",
+                    "id": "c3004d5f-9e7c-3d9c-9592-d1c39eb421c3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Touch",
+                    "id": "9592d1c3-9eb4-21c3-c300-4d5f9e7c3d9c",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PetInteraction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ]
+}
