@@ -42,7 +42,7 @@ public class AssetBundleManager : MonoBehaviour
         if (!loadedBundles.ContainsKey(bundleName))
         {
             string bundlePath = System.IO.Path.Combine(Application.streamingAssetsPath, bundleName);
-            var bundle = await AssetBundle.LoadFromFileAsync(bundlePath);
+            AssetBundle bundle = await LoadBundleAsync(bundlePath);
             if (bundle == null)
             {
                 Debug.LogError($"Failed to load bundle: {bundleName}");
@@ -51,8 +51,22 @@ public class AssetBundleManager : MonoBehaviour
             loadedBundles[bundleName] = bundle;
         }
 
-        var asset = await loadedBundles[bundleName].LoadAssetAsync<T>(assetName);
-        return asset as T;
+        T asset = await LoadAssetAsync<T>(loadedBundles[bundleName], assetName);
+        return asset;
+    }
+
+    private async Task<AssetBundle> LoadBundleAsync(string bundlePath)
+    {
+        var bundleCreateRequest = AssetBundle.LoadFromFileAsync(bundlePath);
+        await Task.Run(() => { while (!bundleCreateRequest.isDone) ; });
+        return bundleCreateRequest.assetBundle;
+    }
+
+    private async Task<T> LoadAssetAsync<T>(AssetBundle bundle, string assetName) where T : Object
+    {
+        var assetLoadRequest = bundle.LoadAssetAsync<T>(assetName);
+        await Task.Run(() => { while (!assetLoadRequest.isDone) ; });
+        return assetLoadRequest.asset as T;
     }
 
     private void OnDestroy()

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using LLM.Services;
 
 /// <summary>
 /// Manages the chat interface and conversation system
